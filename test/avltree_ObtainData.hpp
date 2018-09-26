@@ -23,7 +23,7 @@
 using namespace std;
 
 //Declaring function ObtainData
-void ObtainData(void);
+int64_t ObtainData(void);
 
 /*
 *A Node,in a AVL Tree, has :

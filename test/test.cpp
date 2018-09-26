@@ -32,36 +32,9 @@ int64_t ObtainData()
    /*Define name of file where data is located
    *the file defined is used to obtain data*/
    ifstream  FileIn;
-   cout<<"Select the data list:\n 1-List with 10 people.\n 2-List of 1000 people.\n 3-List of 5000 people \n4-Test."<<endl;
-   cin>>DataList;
-   switch (DataList) {
-     case '1':
-     FileIn.open("lista_10.txt");
-     break;
-
-     case '2':
-     FileIn.open("lista_100.txt");
-     break;
-
-     case '3':
-     FileIn.open("lista_1000.txt");
-     break;
-
-     case '4':
-     FileIn.open("lista_5000.txt");
-
-     case '5':
-     FileIn.open("lista_10000.txt");
-     break;
-
-     case '6':
      FileIn.open("TestData.txt");
-     break;
 
-     default:
-      cout<<"Invalid input. Try Again"<<endl;
-      return 0;
-   }
+
 
    if (!FileIn){
      cout<<"Error: File was not opened"<<endl;
@@ -136,24 +109,30 @@ TEST_CASE("Verify ID Number format","[id]"){
     REQUIRE(ObtainData() == 2);
   }
 
-//  SECTION("ID Number size is more than 10 digits"){
-//  REQUIRE(ObtainData() == NULL);
-//  }
+  SECTION("ID Number size is more than 10 digits"){
+  REQUIRE(ObtainData() == NULL);
+  }
+
+  SECTION("ID Number shall be a integer "){
+  REQUIRE(ObtainData() == 'ABCD');
+   }
 
 
-//  SECTION("AVL Tree Height"){
-//    st_node *l_st_node= new st_node{
-//    1234,"Erick",1, NULL,NULL, NULL, false};
-  //  AVLTree.AVL_Insert(1234,l_st_node);
-  //REQUIRE() == 1);
-//  }
-  //SECTION("ID Number shall be a integer "){
-//  REQUIRE(ObtainData() == 'ABCD');
-//  }
+ SECTION("AVL Tree Height"){
+    st_node *l_st_node= new st_node{
+   1234,"Erick",1, NULL,NULL, NULL, false};
+
+   st_node *InsertedNode= new st_node{
+  1235,"Jake",1, NULL,NULL, NULL, false};
+   AVLTree.AVL_Insert(l_st_node,InsertedNode);
+  REQUIRE(l_st_node->l_ssm_height == 1);
+  }
+  SECTION("1st Node is  Root"){
+  REQUIRE(AVLTree.l_pcmRootNode->l_bsm_isroot != true);
+  }
+
 }
 
 //TEST_CASE("Root Revision","[root]"){
-//  SECTION("1st Node is  Root"){
-//  REQUIRE(AVLTree.l_pcmRootNode->l_bsm_isroot != true);
-//  }
+
 //}

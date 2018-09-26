@@ -18,7 +18,7 @@ string  l_su64_ID;
 string l_s_line;
 uint64_t l_u64_ID;
 
-void ObtainData()
+int64_t ObtainData()
 {
    /*Define name of file where data is located
    *the file defined is used to obtain data*/
